@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ytdl-web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: YTDL_PASSWORD
+        generateValue: true
