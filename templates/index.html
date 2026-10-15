@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YT Downloader Lokal</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>📥 YT Downloader Lokal</h1>
+    <p class="sub">Download video YouTube beserta suaranya — atau potong beberapa klip menit tertentu jadi video pendek.</p>
+    <div id="health" class="health">Mengecek ffmpeg…</div>
+  </header>
+
+  <!-- LANGKAH 1 -->
+  <section class="card">
+    <h2>1. Tempel link video</h2>
+    <div class="row">
+      <input id="url" type="text" placeholder="https://www.youtube.com/watch?v=…" autocomplete="off">
+      <button id="btn-info" class="btn">Cek Video</button>
+    </div>
+    <div id="video-card" class="video-card hidden">
+      <img id="v-thumb" alt="">
+      <div>
+        <div id="v-title" class="v-title"></div>
+        <div id="v-meta" class="v-meta"></div>
+      </div>
+    </div>
+    <div id="info-err" class="err hidden"></div>
+  </section>
+
+  <!-- LANGKAH 2 -->
+  <section class="card hidden" id="step2">
+    <h2>2. Pilih mode</h2>
+    <div class="modes">
+      <label class="mode">
+        <input type="radio" name="mode" value="full" checked>
+        <span><b>Video utuh</b><small>Download full + suara, format MP4</small></span>
+      </label>
+      <label class="mode">
+        <input type="radio" name="mode" value="clips">
+        <span><b>Potong klip</b><small>Ambil menit-menit tertentu jadi beberapa video pendek</small></span>
+      </label>
+    </div>
+
+    <div id="clips-box" class="hidden">
+      <h3>Daftar klip <small class="hint">format: menit:detik — contoh 1:30 atau 0:45</small></h3>
+      <div id="clips"></div>
+      <button id="btn-add-clip" class="btn ghost">+ Tambah klip</button>
+    </div>
+
+    <h2 class="mt">3. Kualitas</h2>
+    <select id="quality">
+      <option value="best">Terbaik (asli)</option>
+      <option value="1080">1080p</option>
+      <option value="720" selected>720p</option>
+      <option value="480">480p</option>
+      <option value="audio">Audio saja (MP3)</option>
+    </select>
+
+    <button id="btn-dl" class="btn big">⬇ Download</button>
+    <div id="dl-err" class="err hidden"></div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section class="card hidden" id="progress-card">
+    <h2>Progress</h2>
+    <div class="bar"><div id="bar-fill"></div></div>
+    <div id="p-note" class="p-note">…</div>
+    <div id="p-err" class="err hidden"></div>
+  </section>
+
+  <!-- HASIL -->
+  <section class="card hidden" id="result-card">
+    <h2>✅ Selesai</h2>
+    <div id="files"></div>
+    <p class="hint">File tersimpan di folder <code>downloads</code> di sebelah aplikasi ini.</p>
+  </section>
+
+  <footer>
+    <p class="hint">Buat dipakai pribadi — download & pakai ulang video orang lain tetap tunduk ke hak cipta / aturan YouTube.</p>
+  </footer>
+
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
